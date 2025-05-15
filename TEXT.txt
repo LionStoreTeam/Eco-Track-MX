@@ -1,0 +1,93 @@
+
+* Requerimientos faltantes
+
+- Puntos Totales => "Eco Points"
+
+- Sección Inicio de Sesión y Registro: Mejorar la UI. 
+
+- Página de Inicio: Mejorar la UI.
+
+- Sección Dashboard: Modificar los contenedores de "Recompensas Disponible" y "Centros de Acopio Cercanos"
+
+- Sección Estadísticas: No necesita cambios
+
+- Sección Actividades: Modificar la UI de los contenedores de las Actividades y adaptarla a Móviles.
+
+- Sección Recompensas: Agregar Recompensas REALES con funcionalidad independiente por cada una.
+
+- Sección Insignias: Integrar un sistema de obtención de Insignias por Actividades completadas, Niveles superados, etc.
+
+- Sección Mapa: Integrar la API de Google Maps o Leaflet para mostrar un Mapa real.
+    • Agregar la funcionalidad y unbicación REAL para los Centros de Acopio.
+
+- Sección Mi Perfil: Agregar funcionalidad para la subida y modificación de la foto de perfil del Usuario.
+    • Agregar funcionalidad para visualizar las Insignias obtenidad por el Usuario.
+    • Agregar validaciones en la modificación de datos del Usuario.
+
+- Desarrollar una nueva Sección "Score": Donde se mostrarán en forma de lista todos los usuarios actuales de la plataforma.
+    • Visualización en forma de tabla para cada Usuario registrado en la plataforma.
+    • Visualización de los siguientes datos para cada Usuario: Nombre, Correo, Número Actividades Totales, Puntos Totales.
+
+
+
+
+- Analiza de nuevo el archivo "/lib/s3-service.ts".
+- También analiza el archivo "/prisma/schema.prisma", aquí enfocate en el Modelo:
+model Profile {
+  id        String  @id @default(cuid())
+  bio       String?
+  address   String?
+  city      String?
+  state     String?
+  zipCode   String?
+  phone     String?
+  avatarUrl String?
+
+  // Relaciones
+  userId String  @unique
+  user   User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  badges Badge[]
+}
+
+- Despues de analizar los dos archivos. Te proporcionaré 2 códigos nuevos de los archivos "/app/api/profile/route.ts" y "/app/perfil/page.tsx". y al final te daré instrucciones de lo que necesito.
+
+
+Para el archivo "/prisma/schema.prisma" el código es el siguiente: 
+
+
+Para el archivo "/lib/s3-service.ts" el código es el siguiente: 
+
+
+Para el archivo "/app/api/profile/route.ts" el código es el siguiente: 
+
+
+Para el archivo "/app/perfil/page.tsx" el código es el siguiente: 
+
+
+
+
+
+- Dentro de mi Bucket de Amazon Web Services (AWS) (S3) existe una carpeta llamada "userimageprofile".
+
+- Después de analizar los archivos "/lib/s3-service.ts", "/prisma/schema.prisma", "/app/api/profile/route.ts", "/app/perfil/page.tsx" y considerar la carpeta de AWS llamada "userimageprofile". 
+
+- Necesito que desarrolles la funcionalidad necesaria en el archivo "/app/perfil/page.tsx" para que el usuario pueda "SUBIR", "ACTUALIZAR" y "ELIMINAR" su foto de perfil, los requerimientos son los siguientes:
+    • La foto de perfil del usuario deberá ser almacenada en la carpeta "userimageprofile" de AWS y en la Base de Datos.
+    • Cada "ACTUALIZACIÓN" o "ELIMINACIÓN" de la foto de perfil se debe reflejar en AWS y en la Base de Datos. 
+    • Solo se permitirán imágenes con formato: (JPG, PNG, JPEG, WEBP).
+    • El tamaño máximo de la imágen deberá ser de: 5MB.
+    • Por defecto la foto inicial de perfil del usuario será la que se generá mediante la función "getInitials(Función para obtener las iniciales del nombre)".
+    • Si el usuario elimina su foto de perfil que previamente publicó, la foto de perfil por defecto será la que se generá mediante la función "getInitials".
+
+Te proporcionaré 4 códigos de mi proyecto desarrollado con Next JS, Typescript, Tailwind CSS, Prisma ORM y AWS (S3).
+1° "/prisma/schema.prisma".
+2° "/lib/s3-service.ts".
+3° "/app/api/profile/route.ts".
+4° "/app/perfil/page.tsx".
+
+Después de que te proporcioné el último código te daré instrucciones de lo que necesito.
+
+
+
+Utiliza el idioma Español. 
+En el siguiente archvio "ecotrack-mx.zip" está un proyecto desarrollado con Next JS, TypeScrip, Tailwind CSS, Prisma ORM y Amazon Web Services (AWS)(S3). Realiza un completo análisis del contenido del proyecto y de todos sus archivos. Después de que finalices en análisis de proyecto de daré instrucciones de lo que necesito.
