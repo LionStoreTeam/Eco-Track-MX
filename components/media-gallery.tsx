@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react"
 import { Loader2 } from "lucide-react"
-import { format } from 'date-fns';
 
 interface MediaGalleryProps {
     evidence: Array<{

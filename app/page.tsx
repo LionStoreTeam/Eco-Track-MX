@@ -1,16 +1,16 @@
 "use client"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { Leaf, Recycle, Droplets, TreePine } from "lucide-react"
+import { Leaf } from "lucide-react"
 import { BackgroundLines } from "@/components/ui/background-lines"
 import { TypeAnimation } from 'react-type-animation';
-
+import Image from "next/image"
 export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">
-      <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <div className="container flex h-16 items-center justify-between">
-          <div className="flex items-center gap-2">
+      <header className="top-0 z-50 w-full bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+        <div className="container flex flex-col h-16 items-center justify-between md:flex-row">
+          <div className="mt-4 mb-4 flex items-center gap-2">
             <Leaf className="h-6 w-6 text-green-600" />
             <span className="text-xl font-bold">EcoTrack MX</span>
           </div>
@@ -29,12 +29,12 @@ export default function Home() {
           </div>
         </div>
       </header>
-      <main className="flex-1">
+      <main className="flex-1 mt-10 md:mt-0">
         <BackgroundLines>
           <section className="w-full py-12 md:py-24 lg:py-32 bg-white dark:from-green-950/20 dark:to-background">
             <div className="container px-4 md:px-6">
-              <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 items-center">
-                <div className="space-y-4">
+              <div className="flex flex-col justify-center items-center lg:flex-row gap-3 lg:mx-10 lg:gap-5">
+                <div className="space-y-4 lg:mx-10">
                   <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
                     Eco Track MX - Gestión y educación ambiental comunitaria
                   </h1>
@@ -42,15 +42,13 @@ export default function Home() {
                     Una plataforma para que escuelas, comunidades y gobiernos locales lleven un seguimiento y educación
                     sobre hábitos ambientales sostenibles.
                   </p>
-                  <div className="flex flex-col gap-2 min-[400px]:flex-row">
+                  <div className="flex flex-col gap-2 min-[400px]:flex-row font-semibold text-[#53c932]">
                     <TypeAnimation
                       sequence={[
                         // Same substring at the start will only be typed out once, initially
                         'Inicia Sesión',
                         1000, // wait 1s before replacing "Mice" with "Hamsters"
                         'Registrate',
-                        1000,
-                        'Y comienza la aventura',
                         1000,
                         'EcoTrack MX',
                         1000,
@@ -62,43 +60,10 @@ export default function Home() {
                     />
                   </div>
                 </div>
-                <div className="mx-auto grid max-w-[500px] grid-cols-2 gap-4">
-                  <div className="grid gap-4">
-                    <div className="rounded-xl bg-green-100 dark:bg-green-900/20 p-8 text-center transition">
-                      <Recycle className="mx-auto h-10 w-10 text-green-600 mb-2" />
-                      <h3 className="font-semibold">Reciclaje</h3>
-                    </div>
-                    <div className="rounded-xl bg-blue-100 dark:bg-blue-900/20 p-8 text-center transition">
-                      <Droplets className="mx-auto h-10 w-10 text-blue-600 mb-2" />
-                      <h3 className="font-semibold">Ahorro de agua</h3>
-                    </div>
-                  </div>
-                  <div className="grid gap-4">
-                    <div className="rounded-xl bg-amber-100 dark:bg-amber-900/20 p-8 text-center transition">
-                      <TreePine className="mx-auto h-10 w-10 text-amber-600 mb-2" />
-                      <h3 className="font-semibold">Reforestación</h3>
-                    </div>
-                    <div className="rounded-xl bg-purple-100 dark:bg-purple-900/20 p-8 text-center transition">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        className="mx-auto h-10 w-10 text-purple-600 mb-2"
-                      >
-                        <path d="M3 6a3 3 0 0 1 3-3h12a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3z" />
-                        <path d="M3 6a3 3 0 0 1 3-3h12a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3z" />
-                        <path d="M8 10a2 2 0 1 1 4 0c0 .5-.5 2-2 2" />
-                        <path d="M10 14h.01" />
-                      </svg>
-                      <h3 className="font-semibold">Educación</h3>
-                    </div>
-                  </div>
+
+
+                <div className="mt-16 w-[320px] sm:w-[500px] md:w-[600px] lg:w-[900px] lg:mt-0 xl:w-[1200px]">
+                  <Image src="/hero.svg" alt="hero" width={1000} height={1000} priority className="animate-heartbeat" />
                 </div>
               </div>
             </div>

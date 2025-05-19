@@ -1,6 +1,5 @@
 "use client"
 import { Progress } from "@/components/ui/progress"
-import { TrendingUp } from "lucide-react"
 import { useEffect, useState } from "react"
 import { Card, CardHeader, CardTitle, CardContent } from "./ui/card"
 import { UserStats } from "@/types/types"

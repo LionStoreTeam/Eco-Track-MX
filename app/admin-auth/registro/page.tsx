@@ -23,6 +23,7 @@ export default function AdminRegistroPage() {
         email: "",
         password: "",
         confirmPassword: "",
+        secretAdminCode: ""
     })
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -47,6 +48,10 @@ export default function AdminRegistroPage() {
         if (!adminCode) {
             toast.error("El código de administrador es obligatorio")
             return
+        }
+
+        if (adminCode !== process.env.ADMIN_CODE) {
+            toast.error("El código de administrador es incorrecto")
         }
 
 

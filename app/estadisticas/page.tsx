@@ -136,7 +136,7 @@ export default function StatsPage() {
           </div>
         ) : stats ? (
           <>
-            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+            <div className="grid gap-4 lg:grid-cols-2 xl:grid-cols-4">
               <Card className="border-4 border-red-100 rounded-xl transition-all ease-linear hover:border-red-600">
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                   <CardTitle className="text-sm font-medium">Puntos Totales</CardTitle>
@@ -230,10 +230,10 @@ export default function StatsPage() {
             </div>
 
             <Tabs defaultValue="activities" className="w-full">
-              <TabsList className="grid w-full grid-cols-3 mb-4">
+              <TabsList className="grid w-full grid-cols-2 mb-4">
                 <TabsTrigger value="activities">Actividades</TabsTrigger>
                 <TabsTrigger value="timeline">Línea de tiempo</TabsTrigger>
-                <TabsTrigger value="impact">Impacto ambiental</TabsTrigger>
+                {/* <TabsTrigger value="impact">Impacto ambiental</TabsTrigger> */}
               </TabsList>
 
               <TabsContent value="activities">
@@ -298,7 +298,7 @@ export default function StatsPage() {
                               return (
                                 <div key={index} className="relative flex h-full w-full flex-col justify-end">
                                   <div
-                                    className="bg-green-600 w-full rounded-md"
+                                    className="bg-red-700 w-full rounded-md"
                                     style={{ height: `${heightPercentage}%` }}
                                   ></div>
                                   <span className="mt-1 text-xs text-muted-foreground text-center">
@@ -325,89 +325,87 @@ export default function StatsPage() {
                 </Card>
               </TabsContent>
 
-              <TabsContent value="impact">
-                <Card>
-                  <CardHeader>
-                    <CardTitle>Impacto ambiental</CardTitle>
-                    <CardDescription>Medición del impacto positivo de tus actividades</CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="grid gap-6 md:grid-cols-2">
-                      <div className="space-y-4">
-                        <div className="space-y-2">
-                          <div className="flex items-center justify-between">
-                            <h3 className="font-medium">Material reciclado</h3>
-                            <span className="font-bold">{stats.impactMetrics.recycledMaterials.toFixed(1)} kg</span>
-                          </div>
-                          <div className="text-sm text-muted-foreground">
-                            <p>Equivalente a:</p>
-                            <ul className="list-disc list-inside mt-1 space-y-1">
-                              <li>{Math.round(stats.impactMetrics.recycledMaterials * 0.5)} kg de CO₂ evitados</li>
-                              <li>
-                                {Math.round(stats.impactMetrics.recycledMaterials * 0.2)} litros de petróleo ahorrados
-                              </li>
-                              <li>{Math.round(stats.impactMetrics.recycledMaterials * 2)} kWh de energía ahorrados</li>
-                            </ul>
-                          </div>
+              <Card className="mt-10">
+                <CardHeader>
+                  <CardTitle>Impacto ambiental</CardTitle>
+                  <CardDescription>Medición del impacto positivo de tus actividades</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="grid gap-6 md:grid-cols-2">
+                    <div className="space-y-4">
+                      <div className="space-y-2">
+                        <div className="flex items-center justify-between">
+                          <h3 className="font-medium">Material reciclado</h3>
+                          <span className="font-bold">{stats.impactMetrics.recycledMaterials.toFixed(1)} kg</span>
                         </div>
-
-                        <div className="space-y-2">
-                          <div className="flex items-center justify-between">
-                            <h3 className="font-medium">Árboles plantados</h3>
-                            <span className="font-bold">{stats.impactMetrics.treesPlanted}</span>
-                          </div>
-                          <div className="text-sm text-muted-foreground">
-                            <p>Beneficios:</p>
-                            <ul className="list-disc list-inside mt-1 space-y-1">
-                              <li>Capturarán aprox. {stats.impactMetrics.treesPlanted * 25} kg de CO₂ al año</li>
-                              <li>Producirán oxígeno para {stats.impactMetrics.treesPlanted * 2} personas</li>
-                              <li>Ayudarán a prevenir la erosión del suelo</li>
-                            </ul>
-                          </div>
+                        <div className="text-sm text-muted-foreground">
+                          <p>Equivalente a:</p>
+                          <ul className="list-disc list-inside mt-1 space-y-1">
+                            <li>{Math.round(stats.impactMetrics.recycledMaterials * 0.5)} kg de CO₂ evitados</li>
+                            <li>
+                              {Math.round(stats.impactMetrics.recycledMaterials * 0.2)} litros de petróleo ahorrados
+                            </li>
+                            <li>{Math.round(stats.impactMetrics.recycledMaterials * 2)} kWh de energía ahorrados</li>
+                          </ul>
                         </div>
                       </div>
 
-                      <div className="space-y-4">
-                        <div className="space-y-2">
-                          <div className="flex items-center justify-between">
-                            <h3 className="font-medium">Agua ahorrada</h3>
-                            <span className="font-bold">{stats.impactMetrics.waterSaved.toFixed(1)} litros</span>
-                          </div>
-                          <div className="text-sm text-muted-foreground">
-                            <p>Equivalente a:</p>
-                            <ul className="list-disc list-inside mt-1 space-y-1">
-                              <li>{Math.round(stats.impactMetrics.waterSaved / 150)} duchas completas</li>
-                              <li>{Math.round(stats.impactMetrics.waterSaved / 10)} cargas de lavadora</li>
-                              <li>
-                                Agua potable para {Math.round(stats.impactMetrics.waterSaved / 2)} personas por un día
-                              </li>
-                            </ul>
-                          </div>
+                      <div className="space-y-2">
+                        <div className="flex items-center justify-between">
+                          <h3 className="font-medium">Árboles plantados</h3>
+                          <span className="font-bold">{stats.impactMetrics.treesPlanted}</span>
                         </div>
-
-                        <div className="space-y-2">
-                          <div className="flex items-center justify-between">
-                            <h3 className="font-medium">Energía ahorrada</h3>
-                            <span className="font-bold">{stats.impactMetrics.energySaved.toFixed(1)} kWh</span>
-                          </div>
-                          <div className="text-sm text-muted-foreground">
-                            <p>Equivalente a:</p>
-                            <ul className="list-disc list-inside mt-1 space-y-1">
-                              <li>{Math.round(stats.impactMetrics.energySaved * 0.5)} kg de CO₂ evitados</li>
-                              <li>
-                                {Math.round(stats.impactMetrics.energySaved / 5)} días de consumo de un hogar promedio
-                              </li>
-                              <li>
-                                {Math.round(stats.impactMetrics.energySaved * 0.1)} litros de combustible ahorrados
-                              </li>
-                            </ul>
-                          </div>
+                        <div className="text-sm text-muted-foreground">
+                          <p>Beneficios:</p>
+                          <ul className="list-disc list-inside mt-1 space-y-1">
+                            <li>Capturarán aprox. {stats.impactMetrics.treesPlanted * 25} kg de CO₂ al año</li>
+                            <li>Producirán oxígeno para {stats.impactMetrics.treesPlanted * 2} personas</li>
+                            <li>Ayudarán a prevenir la erosión del suelo</li>
+                          </ul>
                         </div>
                       </div>
                     </div>
-                  </CardContent>
-                </Card>
-              </TabsContent>
+
+                    <div className="space-y-4">
+                      <div className="space-y-2">
+                        <div className="flex items-center justify-between">
+                          <h3 className="font-medium">Agua ahorrada</h3>
+                          <span className="font-bold">{stats.impactMetrics.waterSaved.toFixed(1)} litros</span>
+                        </div>
+                        <div className="text-sm text-muted-foreground">
+                          <p>Equivalente a:</p>
+                          <ul className="list-disc list-inside mt-1 space-y-1">
+                            <li>{Math.round(stats.impactMetrics.waterSaved / 150)} duchas completas</li>
+                            <li>{Math.round(stats.impactMetrics.waterSaved / 10)} cargas de lavadora</li>
+                            <li>
+                              Agua potable para {Math.round(stats.impactMetrics.waterSaved / 2)} personas por un día
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+
+                      <div className="space-y-2">
+                        <div className="flex items-center justify-between">
+                          <h3 className="font-medium">Energía ahorrada</h3>
+                          <span className="font-bold">{stats.impactMetrics.energySaved.toFixed(1)} kWh</span>
+                        </div>
+                        <div className="text-sm text-muted-foreground">
+                          <p>Equivalente a:</p>
+                          <ul className="list-disc list-inside mt-1 space-y-1">
+                            <li>{Math.round(stats.impactMetrics.energySaved * 0.5)} kg de CO₂ evitados</li>
+                            <li>
+                              {Math.round(stats.impactMetrics.energySaved / 5)} días de consumo de un hogar promedio
+                            </li>
+                            <li>
+                              {Math.round(stats.impactMetrics.energySaved * 0.1)} litros de combustible ahorrados
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
             </Tabs>
           </>
         ) : (

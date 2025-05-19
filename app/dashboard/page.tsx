@@ -2,13 +2,13 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
-import { BarChart3, Gift, Map, PlusCircle, Leaf, Recycle, Droplets, TreePine, TrendingUp } from "lucide-react"
+import { BarChart3, Gift, Map, PlusCircle, Leaf, Recycle, Droplets, TreePine } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Progress } from "@/components/ui/progress"
 import DashboardLayout from "@/components/dashboard-layout"
 import { UserStats } from "@/types/types"
-
+import Image from "next/image"
 
 
 export default function DashboardPage() {
@@ -102,13 +102,13 @@ export default function DashboardPage() {
           <p className="">Bienvenido a tu panel de control de EcoTrack MX</p>
         </div>
 
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-4 lg:grid-cols-2 xl:grid-cols-4">
           <Card className="border-4 border-blue-100 rounded-xl transition-all ease-linear hover:border-blue-700">
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Puntos Totales</CardTitle>
-              <TrendingUp className="h-4 w-4 text-muted-foreground" />
+            <CardHeader className="flex flex-col items-center justify-between space-y-0 pb-2">
+              {/* <TrendingUp className="h-4 w-4 text-muted-foreground" /> */}
+              <CardTitle className="text-sm font-medium text-center">Puntos Totales</CardTitle>
             </CardHeader>
-            <CardContent>
+            <CardContent className="text-center">
               <div className="text-2xl font-bold">{stats.totalPoints}</div>
               <p className="text-xs text-muted-foreground">Nivel: {stats.level}</p>
               <div className="mt-3">
@@ -121,42 +121,49 @@ export default function DashboardPage() {
                   {pointsPerLevel - pointsInCurrentLevel} puntos para el siguiente nivel
                 </p>
               </div>
+              <Image src="/vector_pts.png" alt="vector_pts" width={1000} height={1000} priority />
             </CardContent>
           </Card>
           <Card className="border-4 border-blue-100 rounded-xl transition-all ease-linear hover:border-blue-700">
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Actividades Registradas</CardTitle>
-              <PlusCircle className="h-4 w-4 text-muted-foreground" />
+            <CardHeader className="flex flex-col items-center justify-between space-y-0 pb-2">
+              {/* <PlusCircle className="h-4 w-4 text-muted-foreground" /> */}
+              <CardTitle className="text-sm font-medium text-center">Mira tus actividades registradas</CardTitle>
             </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold">{stats.activityCount}</div>
-              <p className="text-xs text-muted-foreground">
+            <CardContent className="text-center transition-all ease-linear duration-300 hover:scale-95">
+              {/* <div className="text-2xl font-bold">{stats.activityCount}</div> */}
+              {/* <p className="text-xs text-muted-foreground">
                 {stats.activityCount === 0 ? "Registra tu primera actividad" : "Sigue registrando tus actividades"}
-              </p>
+              </p> */}
+              <Link href="/actividades">
+                <Image src="/vector_act.png" alt="" width={1000} height={1000} priority />
+              </Link>
             </CardContent>
           </Card>
           <Card className="border-4 border-blue-100 rounded-xl transition-all ease-linear hover:border-blue-700">
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Recompensas Disponibles</CardTitle>
-              <Gift className="h-4 w-4 text-muted-foreground" />
+            <CardHeader className="flex flex-col items-center justify-between space-y-0 pb-2">
+              {/* <Gift className="h-4 w-4 text-muted-foreground" /> */}
+              <CardTitle className="text-sm font-medium text-center">Explora la sección Recompensas</CardTitle>
             </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold">12</div>
-              <p className="text-xs text-muted-foreground">
+            <CardContent className="transition-all ease-linear duration-300 hover:scale-95">
+              <Link href="/recompensas">
+                <Image src="/vector_rewards.png" width={1000} height={1000} priority alt="green dash rewards" />
+              </Link>
+              {/* <p className="text-xs text-muted-foreground">
                 {stats.totalPoints < 500
                   ? "Necesitas más puntos para canjear"
                   : `Puedes canjear ${Math.floor(stats.totalPoints / 500)} recompensas`}
-              </p>
+              </p> */}
             </CardContent>
           </Card>
           <Card className="border-4 border-blue-100 rounded-xl transition-all ease-linear hover:border-blue-700">
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Centros de Acopio Cercanos</CardTitle>
-              <Map className="h-4 w-4 text-muted-foreground" />
+            <CardHeader className="flex flex-col items-center justify-between space-y-0 pb-2">
+              {/* <Map className="h-4 w-4 text-muted-foreground" /> */}
+              <CardTitle className="text-sm font-medium text-center">Explora la sección Centros de Acopio</CardTitle>
             </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold">8</div>
-              <p className="text-xs text-muted-foreground">En un radio de 5 km</p>
+            <CardContent className="text-center transition-all ease-linear duration-300 hover:scale-95">
+              <Link href="/mapa">
+                <Image src="/vector_map.png" width={1000} height={1000} alt="vector_map" priority />
+              </Link>
             </CardContent>
           </Card>
         </div>
@@ -177,18 +184,18 @@ export default function DashboardPage() {
                   {stats.recentActivities.map((activity) => (
                     <div
                       key={activity.id}
-                      className="flex items-center justify-between border-b pb-4 last:border-0 last:pb-0"
+                      className="flex flex-col justify-start text-center xl:flex-row"
                     >
-                      <div className="flex items-center gap-4">
-                        <div className="flex h-9 w-9 items-center justify-center rounded-full bg-green-100 dark:bg-green-900/20">
+                      <Card className="flex flex-col items-center text-center justify-center gap-4 xl:flex-row xl:w-full xl:px-10 xl:justify-between xl:items-center xl:text-center p-3 hover:bg-blue-700 hover:text-white transition-all ease-linear duration-300">
+                        <div className="flex h-9 w-9 items-center justify-center rounded-full border-2 border-gray-300">
                           {getActivityIcon(activity.type)}
                         </div>
                         <div>
                           <div className="font-medium">{activity.title}</div>
-                          <div className="text-sm text-muted-foreground">{formatDate(activity.date)}</div>
+                          <div className="text-sm">{formatDate(activity.date)}</div>
                         </div>
-                      </div>
-                      <div className="flex items-center gap-1 text-green-600 font-medium">+{activity.points} pts</div>
+                        <div className="gap-1 text-blue-600 font-medium">+{activity.points} pts</div>
+                      </Card>
                     </div>
                   ))}
                 </div>
@@ -207,7 +214,7 @@ export default function DashboardPage() {
             {stats.recentActivities.length > 0 && (
               <CardFooter>
                 <Link href="/actividades">
-                  <Button variant="outline">Ver todas las actividades</Button>
+                  <Button variant="outline" className="hover:bg-blue-700 hover:text-white transition-all ease-linear duration-300">Ver todas las actividades</Button>
                 </Link>
               </CardFooter>
             )}
@@ -219,7 +226,7 @@ export default function DashboardPage() {
             </CardHeader>
             <CardContent className="grid gap-4">
               <Link href="/actividades/nueva">
-                <Button className="w-full bg-green-600 hover:bg-green-700">
+                <Button className="w-full bg-blue-600 hover:bg-blue-700">
                   <PlusCircle className="mr-2 h-4 w-4" />
                   Registrar nueva actividad
                 </Button>
