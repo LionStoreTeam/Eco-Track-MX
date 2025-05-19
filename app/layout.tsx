@@ -11,7 +11,6 @@ const inter = Inter({ subsets: ["latin"] })
 export const metadata: Metadata = {
   title: "EcoTrack MX",
   description: "Plataforma digital de gestión y educación ambiental comunitaria",
-  generator: 'v0.dev'
 }
 
 export default function RootLayout({
