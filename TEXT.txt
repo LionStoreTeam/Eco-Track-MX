@@ -12,7 +12,7 @@
 - Sección Recompensas: Agregar Rdecompensas REALES con funcionalidad independiente por cada una.
   • Verificar la funcionalidad cuando una Recompensa haya expirado.
 
-
+npx prisma generate --no-engine
 
 - Funcionalidades extas:
 Continuando con el desarrollo del proyecto. Necesito que integres una nueva funcionalidad que esté únicamente disponible para los usuarios "ADMIN", sus requerimientos son los siguientes:
@@ -33,6 +33,10 @@ Después de solucionar los errores, las correcciones que necesito son las siguie
 - Si se actualiza el tipo o la cantidad, recalcular los puntos basados en la nueva información y actualizar los Puntos Totales del Usuario en la Base de Datos.
 - Poder ELIMINAR "Imágenes - Videos" de la Actividad.
 - Genera en endpoint "/api/admin/notifications" de manera correcta. 
+
+
+The file "/vercel/path0/.next/routes-manifest.json" couldn't be found. This is often caused by a misconfiguration in your project.
+
 
 # - Sección Mapa: Integrar la API de Google Maps o Leaflet para mostrar un Mapa real.
 # • Agregar la funcionalidad y ubicación REAL para los Centros de Acopio.
